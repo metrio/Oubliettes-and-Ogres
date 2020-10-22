@@ -7,56 +7,76 @@ class CLI
     @@character = nil
     @@adventure = nil
 
+
+
+    
     def main_menu       
         system('clear')
         puts "Welcome to Oubliettes & Ogres"
-        sleep(1.5)
-    
-        user = @@prompt.ask("Type in your Account Name:")
-        puts " "
-        pass = @@prompt.mask("Password")
-
-        if Player.find_by(username: user) == nil
-            Player.create(username: user, password: pass)
-            puts " "
-        elsif 
-            Player.find_by(username: user, password: pass)
-            puts ' '
-        elsif 
-            puts "Your account info was wrong"
-        end
+        #sleep(1.5)
+        self.make_user
     end
 
-    def pick_character
+    def make_user
+        sleep(1.5)
+        choices = { "Log in" => 1, "Sign up" => 2} 
+        choice = @@prompt.select("Would you like to sign up or log in?", choices)
+        if choice == 1
+            Player.signup
+        elsif choice == 2
+            Player.login
+        else
+            puts "Make a valid choice, what are you, an ogre?!"
+            self.make_user
+        end
+        self.meet_character    
+    end
+
+    def meet_character
         system('clear')
         puts "Meet your Character"
-        
         Character.charac_info 
-        
-        choice = @@prompt.select("Pick your Character?") do |menu| #choice is a number
-            menu.enum "."
-          
-            menu.choice "Luvic", 1
-            menu.choice "Talvi", 2
-            menu.choice "Elta", 3
-            menu.choice "Airgan", 4
+        self.ass_char
+    end
 
-            case choice
-            when 1
-                # Character.find_by(name:"Luvic")
-                PlayerCharacter.create( luvic.id)
-            when 2
-                # Character.find_by(name:"Talvi")
-                PlayerCharacter.create( talvi.id)
-            when 3 
-                # Character.find_by(name:"Elta")
-                PlayerCharacter.create( elta.id)
-            when 4 
-                # Character.find_by(name: "Airgan")
-                PlayerCharacter.create( airgan.id)
+    def ass_char    
+        choice = @@prompt.select("Choose your character!", %w(Luvic Talvi Elta Airgan))
+       
+        character = Character.find_by(name: choice).id
+        PlayerCharacter.create(player_id: Player.current.id ,character_id: character)
+        #find player instance.id, to pass into playercharacter.create
+        
+    end
+        
+        
+        
+        
+        #choice = @@prompt.select("Pick your Character?") do |menu| #choice is a number
+        #     menu.enum "."
+          
+        #     menu.choice "Luvic", 1
+        #     menu.choice "Talvi", 2
+        #     menu.choice "Elta", 3
+        #     menu.choice "Airgan", 4
+
+        #     case choice
+        #     when 1
+        #         character = Character.find_by(name:"Luvic").id
+        #         player = Player.find_by(username:user).id
+               
+        #         PlayerCharacter.create(player_id: player, character_id: character)
+        #     when 2
+        #         # Character.find_by(name:"Talvi")
+        #         # PlayerCharacter.create( talvi.id)
+        #     when 3 
+        #         # Character.find_by(name:"Elta")
+        #         # PlayerCharacter.create( elta.id)
+        #     when 4 
+        #         # Character.find_by(name: "Airgan")
+        #         # PlayerCharacter.create( airgan.id)
         
                 
-            end
+        
             
             #what's the answer to choice? Is it a number or a string
             #if a string then compare then Character.name == "choice"
@@ -65,9 +85,9 @@ class CLI
         #     puts "Alright, (character) ready to go into the dungeon?"
 
         
-        end
-        binding.pry
-    end
+
+      
+
       
         
 

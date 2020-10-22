@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2020_10_22_212955) do
     t.integer "adventure_id"
   end
 
-  create_table "player_character", force: :cascade do |t|
+  create_table "player_characters", force: :cascade do |t|
     t.integer "player_id"
     t.integer "character_id"
   end
