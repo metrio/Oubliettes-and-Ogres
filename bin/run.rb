@@ -3,8 +3,10 @@ require_relative '../config/environment'
 require_all 'lib'
 require_all "./apps"
 
-new_adventure = Adventure.new(location:"Asgard")
+cli = CLI.new
 
-new_adventure.explore
+#cli.main_menu
 
-monster_array(1)
+cli.pick_character
+
+
