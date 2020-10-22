@@ -90,4 +90,3 @@ wand = ItemWeapon.create(name:"Wand")
 
 
 
-binding.pry

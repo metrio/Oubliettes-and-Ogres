@@ -33,7 +33,7 @@ class CLI
         
         Character.charac_info 
         
-        choice = @@prompt.select("Pick your Character?") do |menu|
+        choice = @@prompt.select("Pick your Character?") do |menu| #choice is a number
             menu.enum "."
           
             menu.choice "Luvic", 1
@@ -41,42 +41,44 @@ class CLI
             menu.choice "Elta", 3
             menu.choice "Airgan", 4
 
-            player_character = Character.find_by(name: choice) 
-            #player_character.player_id = Player.ids## this does not work
-           
-           
+            case choice
+            when 1
+                # Character.find_by(name:"Luvic")
+                PlayerCharacter.create( luvic.id)
+            when 2
+                # Character.find_by(name:"Talvi")
+                PlayerCharacter.create( talvi.id)
+            when 3 
+                # Character.find_by(name:"Elta")
+                PlayerCharacter.create( elta.id)
+            when 4 
+                # Character.find_by(name: "Airgan")
+                PlayerCharacter.create( airgan.id)
+        
+                
+            end
+            
             #what's the answer to choice? Is it a number or a string
             #if a string then compare then Character.name == "choice"
             #if a number then we build cases to do something depending on the choice
         #  character = gets
         #     puts "Alright, (character) ready to go into the dungeon?"
+
+        
         end
+        binding.pry
     end
       
-        #    
+        
 
           
        
        
        
-        # picked = @@prompt.select("Pick your Character", %w(Luvic, Talvi, Elta, Airgan))
+
 
         
-        # case picked
-        # when "Luvic"
-
-        #     puts "You chose Luvic"
-        # when "Talvi"
-
-        #     puts "You chose Talvi"
-        # when "Elta"
-
-        #     puts "You chose Elta"
-        # when "Airgan"
-
-        #     puts "You chose Airgan"
-        # end
-
+       
     
 
 

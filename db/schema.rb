@@ -1,4 +1,4 @@
-A# This file is auto-generated from the current state of the database. Instead
+# This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
@@ -10,7 +10,7 @@ A# This file is auto-generated from the current state of the database. Instead
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_20_232203) do
+ActiveRecord::Schema.define(version: 2020_10_22_212955) do
 
   create_table "adventures", force: :cascade do |t|
     t.string "location"
@@ -40,6 +40,11 @@ ActiveRecord::Schema.define(version: 2020_10_20_232203) do
     t.integer "health_points"
     t.string "attack"
     t.integer "adventure_id"
+  end
+
+  create_table "player_character", force: :cascade do |t|
+    t.integer "player_id"
+    t.integer "character_id"
   end
 
   create_table "players", force: :cascade do |t|
