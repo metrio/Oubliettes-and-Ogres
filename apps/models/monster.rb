@@ -13,9 +13,13 @@ def attack
     end
 end
 
- def self.encounter
-     Monster.all.sample
+def self.encounter
+    Monster.all.select {|monster| monster.name != "Black Wrymling Dragon"}.sample
+end
 
+
+def self.boss_encounter
+  boss =  Monster.find {|monster| monster.name = "Black Wrymling Dragon"}
 end
 
 
