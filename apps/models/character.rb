@@ -5,7 +5,7 @@ class Character < ActiveRecord::Base
 
     def character_choice
         Character.all
-    end #see what this does without it, but later
+    end 
 
 
     def self.charac_info
