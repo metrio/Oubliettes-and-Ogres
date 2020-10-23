@@ -63,7 +63,6 @@ class Adventure < ActiveRecord::Base
         puts "The sound gets closer"
         end
         puts "Its here the #{Adventure.boss.name} has appeared"
-
     end
         
 

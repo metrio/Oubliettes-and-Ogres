@@ -46,47 +46,47 @@ class CLI
         self.preamble
     end
     def preamble
-        # system('clear') #ascii art if time
-        # puts "The legends say there's a great treasure in these dungeons..."
-        # puts " "
-        # sleep(2.5)
-        # puts "But no one has ever come back from their quest."
-        # puts " "
-        # sleep(2.5)
-        # puts "Local lore tells of a dragon."
-        # puts " "
-        # sleep(2.5)
-        # puts "Treasure, or dragon? Riches beyond your wildest dreams, or a fiery death?"
-        # puts " "
-        # sleep(2.5)
-        # puts "You've set out early on your quest. It's mid-day and the sun is high."
-        # puts " "
-        # sleep(3.5)
+        system('clear') #ascii art if time
+        puts "The legends say there's a great treasure in these dungeons..."
+        puts " "
+        sleep(2.5)
+        puts "But no one has ever come back from their quest."
+        puts " "
+        sleep(2.5)
+        puts "Local lore tells of a dragon."
+        puts " "
+        sleep(2.5)
+        puts "Treasure, or dragon? Riches beyond your wildest dreams, or a fiery death?"
+        puts " "
+        sleep(2.5)
+        puts "You've set out early on your quest. It's mid-day and the sun is high."
+        puts " "
+        sleep(3.5)
         self.enter_dungeon 
     end
 
     def enter_dungeon
         system('clear')
-        # choices = { "Yes" => 1,  "No" => 2} 
-        # choice = @@prompt.select("You finally come upon the fabled dungeon, do you dare enter?", choices)
-        #     if choice == 1
-        #         puts "Cautiously you make your way through the entrance..."
-        #     else choice == 2
-        #         exit!
-        #     end
-        #     sleep(1.5)
+        choices = { "Yes" => 1,  "No" => 2} 
+        choice = @@prompt.select("You finally come upon the fabled dungeon, do you dare enter?", choices)
+            if choice == 1
+                puts "Cautiously you make your way through the entrance..."
+            else choice == 2
+                exit!
+            end
+            sleep(1.5)
         self.map
     end
 
     def map
         system('clear')
-        # puts "Be careful what you choose, once you go back you cannot return."
-        # sleep(2)
+        puts "Be careful what you choose, once you go back you cannot return."
+        sleep(2)
         Adventure.leg_one
         system('clear') 
-        # puts "Oh no! What's that over there!"
-        # Adventure.fight
-        # Monster.attack
+        puts "Oh no! What's that over there!"
+        
+       
             #neither of these attack methods work right now 03:17am, enemy.attack works within Adventure.fight though... got some stuff to think on...
         self.fight
     end
@@ -115,7 +115,8 @@ class CLI
             sleep(3)
             exit!
          else choice == 3
-            puts "You've successfully ran away, but is that really what you wanted to do?" 
+            puts "You've successfully avoided the #{enemy.name}"
+            puts "Onward!" 
             self.system_clear
             Adventure.leg_two
         end
@@ -143,6 +144,7 @@ class CLI
             else 
                 puts "You rush past what looks to be a large rats nest laced with gold pieces."
                 puts "Better to not bother them, you've heard the rats here are not to be messed with."
+                sleep(2)
                 self.system_clear
                 Adventure.leg_three
             end
@@ -150,7 +152,58 @@ class CLI
             self.boss_fight
         end
 
-            def boss_fight
-                puts "The locals warned you about this, but you came anyway. Foolish"
+        def boss_fight
+            puts "The locals warned you about this, but you came anyway. Foolish"
+            puts " "
+            puts "Its a #{Adventure.boss.name}!"
+           2.times do 
+            choices = {"Attack!" => 1, "Wait.." => 2, "Run Away!!!!" => 3}
+            choice = @@prompt.select("What do you want to do?!", choices) 
+         if choice == 1
+            puts "You draw blood! A worthy attack on a worthy foe."
+            self.system_clear         
+         elsif choice == 2
+            puts "The #{Adventure.boss.name} attacked first. You've died you weren't worthy"
+            puts "Better luck next time. Goodbye"
+            sleep(3)
+            exit!
+         else choice == 3
+            puts "You weren't fast enough. You've been eaten by the #{Adventure.boss.name}" 
+            self.system_clear
+            exit!
+                end
+                puts "The dragon tries to attack, you narrowly dodge"
             end
+            self.system_clear
+            puts "The dragon is hurting."
+            puts "You go in to deal the final death blow!"
+            puts " "
+            puts "You did it! You slayed the #{Adventure.boss.name}"
+            self.gather_trophy
+        end
+
+        def gather_trophy
+            self.system_clear
+            puts "You've proven your grit as an adventurer." 
+            choices = {"Cut off it's head!" => 1, "Remove it's heart" => 2, "Just a scale will suffice, I know my worth" => 3}
+            choice = @@prompt.select("What would you like to bring back to your village as a trophy?", choices)
+            if choice == 1
+                puts "You set to work removing the gruesome visage of the slain beast."
+            elsif choice == 2
+                puts "You stand victorious above the dragon, and plunge your dagger into it's chest to carve out it's heart."
+                puts "Many a fantastic potion calls for dragon hearts."
+            else choice == 3
+                puts "You delicately prise off one glimmering obsidian scale."
+            end
+            sleep(4)
+            self.game_end
+        end
+
+        def game_end
+            self.system_clear
+            puts "The bards will sing of this stunning victory for generations to come"
+            sleep(5)
+            exit!
+        end
+
 end #class end
