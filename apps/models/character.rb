@@ -19,13 +19,6 @@ class Character < ActiveRecord::Base
         PlayerCharacter.id = CLI.ass_char 
     end
 
-    # def hero_attack
-    #     success = rand(1..20)
-    #     if success >= 14
-    #         puts "Aha! A hit!"
-    #         monster.health_points - rand(1..8)
-    #     else puts "#{self.name} missed"
-    #     end
-    # end
+    
  
 end #end of Character
