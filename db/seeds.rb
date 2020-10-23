@@ -74,7 +74,7 @@ elta = Character.create(name:"Elta", race:human, char_class:ranger, health_point
 airgan = Character.create(name: "Airgan", race:dwarf, char_class: wizard, health_points: 24, exp_points: 0)
 
 
-map1 = Adventure.create(location: "map1")
+map_one = Adventure.create(location: "map1")
 
 
 amulet = ItemWeapon.create(name:"Amulet")

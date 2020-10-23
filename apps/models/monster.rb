@@ -10,7 +10,7 @@ class Monster < ActiveRecord::Base
 
 def attack
     success = rand(1..20)
-    if success >= character.armor_class
+    if success >= 14
         character.health_points - self.attack
     elsif success == 1
         self.health_points - self.attack

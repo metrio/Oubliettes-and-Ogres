@@ -5,6 +5,7 @@ class Adventure < ActiveRecord::Base
     has_many    :character
     has_many    :monster
     has_many    :player, through: :character
+    has_many    :player_character, through: :character
     @@prompt = TTY::Prompt.new
 
    
@@ -27,41 +28,49 @@ class Adventure < ActiveRecord::Base
         #puts "Dragon dodged that spell! Watch out!"
     end
 
-    def enemy 
+    def self.enemy 
         Monster.encounter
     end
 
-    def boss
+    def self.boss
         Monster.boss_encounter
     end
 
+    def self.fight
+        enemy = self.enemy
+        choices = {"Attack!" => 1, "Wait.." => 2, "Run Away!!!!" => 3}
+        choice = @@prompt.select("Its a #{enemy.name}!", choices)
 
-    def fight
-        puts "You come upon a #{dragon.name}"
-        @@prompt
-    end   
-    
-    
         
+        if choice == 1
+            Character.hero_attack #placeholder need to interpolate char.name
+        elsif choice == 2
+            enemy.attack
+        else
+            exit!
+        end
+    end
+
+#FCharacter.find_by(id:)
+         # char_id =  PlayerCharacter.current_char
+        # binding.p!!ry
+        # charchar = Character.find_by(id: char_id)
     
-    # def moving_through
-    #     move = @@prompt 
+    def self.leg_one
+       # n = rand(4..10)
+        n = 0
+        loop do 
+        n += 1
+        choices = {"left" => 1, "right" => 2, "forward" => 3, "go back" => 4}
+        @@prompt.select("Which way?", choices)
+        if n >= 3
+            break
+            end
+        end
+    end
 
-    #    # do loop (condition after certain number of inputs boss encounter)
+    
 
-    #     case move
-        
-    #     when 1 #forward
-    #         puts "you move further into the dungeon"
-    #     when 2 #left
-    #         puts "you take a left and continue down the hall"
-    #     when 3 #right
-    #         puts "you continue your search to the right"
-    #     when 4 #go back
-    #         puts "you come to a dead end, you go back"
-    #     end
-
-    # end
    
 
 end #End of Adventure

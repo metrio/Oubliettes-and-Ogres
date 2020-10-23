@@ -5,7 +5,10 @@ class PlayerCharacter < ActiveRecord::Base
 
     #method for joining player and character id after character is chosen
     
-
+    
+    def self.current_char
+        self.ids.last
+     end
 end
  
 
