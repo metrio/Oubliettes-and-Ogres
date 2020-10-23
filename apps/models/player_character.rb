@@ -6,10 +6,7 @@ class PlayerCharacter < ActiveRecord::Base
     #method for joining player and character id after character is chosen
     
 
-    def charchar
-        
-    end
 end
-
+ 
 
 # playercharacter = gets 

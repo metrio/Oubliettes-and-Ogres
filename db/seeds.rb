@@ -16,7 +16,7 @@ api_response_class = RestClient.get("https://www.dnd5eapi.co/api/classes")
 api_data_class = JSON.parse(api_response_class)
  
 ################################################ Races
- 
+  
 api_response_race = RestClient.get("https://www.dnd5eapi.co/api/races")
 api_data_race = JSON.parse(api_response_race)
  

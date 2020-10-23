@@ -6,10 +6,8 @@ class CLI
     @@player = nil
     @@character = nil
     @@adventure = nil
-
-
-
-    
+    @@player_character = nil #added this in to be able create PlayerCharacter class instance I think
+        
     def main_menu       
         system('clear')
         puts "Welcome to Oubliettes & Ogres"
@@ -25,8 +23,9 @@ class CLI
             Player.signup
         elsif choice == 2
             Player.login
-        else
-            puts "Make a valid choice, what are you, an ogre?!"
+        else #choice != 1 or 2
+            puts "Are you an ogre?! Make a valid choice, " 
+            #test that invalid choice this starts the method over
             self.make_user
         end
         self.meet_character    
@@ -40,69 +39,13 @@ class CLI
     end
 
     def ass_char    
+        
         choice = @@prompt.select("Choose your character!", %w(Luvic Talvi Elta Airgan))
        
         character = Character.find_by(name: choice).id
-        PlayerCharacter.create(player_id: Player.current.id ,character_id: character)
-        #find player instance.id, to pass into playercharacter.create
         
+        PlayerCharacter.create(player_id: Player.current ,character_id: character)
+           
     end
-        
-        
-        
-        
-        #choice = @@prompt.select("Pick your Character?") do |menu| #choice is a number
-        #     menu.enum "."
-          
-        #     menu.choice "Luvic", 1
-        #     menu.choice "Talvi", 2
-        #     menu.choice "Elta", 3
-        #     menu.choice "Airgan", 4
-
-        #     case choice
-        #     when 1
-        #         character = Character.find_by(name:"Luvic").id
-        #         player = Player.find_by(username:user).id
-               
-        #         PlayerCharacter.create(player_id: player, character_id: character)
-        #     when 2
-        #         # Character.find_by(name:"Talvi")
-        #         # PlayerCharacter.create( talvi.id)
-        #     when 3 
-        #         # Character.find_by(name:"Elta")
-        #         # PlayerCharacter.create( elta.id)
-        #     when 4 
-        #         # Character.find_by(name: "Airgan")
-        #         # PlayerCharacter.create( airgan.id)
-        
-                
-        
-            
-            #what's the answer to choice? Is it a number or a string
-            #if a string then compare then Character.name == "choice"
-            #if a number then we build cases to do something depending on the choice
-        #  character = gets
-        #     puts "Alright, (character) ready to go into the dungeon?"
-
-        
-
-      
-
-      
-        
-
-          
-       
-       
-       
-
-
-        
-       
-    
-
-
-
-
 
 end #class end

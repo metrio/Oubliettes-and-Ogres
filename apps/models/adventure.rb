@@ -1,3 +1,4 @@
+#t.string :location
 
 class Adventure < ActiveRecord::Base  
     has_many    :item_weapon
@@ -7,7 +8,7 @@ class Adventure < ActiveRecord::Base
     @@prompt = TTY::Prompt.new
 
    
-
+ 
     def item
 
     end

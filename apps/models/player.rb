@@ -1,6 +1,9 @@
 require 'tty-prompt'
 require 'pry'
 
+# t.string :username
+# t.string :password
+ 
 class Player < ActiveRecord::Base
     has_many :character
     has_many :adventure, through: :character
@@ -21,10 +24,8 @@ class Player < ActiveRecord::Base
         self.find_by(username: user, password: pass)
     end
 
-    def current
-        #is player logged in now
-        #self.all.each {|x| x.username == self}.ids
-        binding.pry
+    def self.current
+       self.ids.last
     end
 
     

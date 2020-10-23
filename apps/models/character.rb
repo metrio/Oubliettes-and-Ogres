@@ -13,5 +13,5 @@ class Character < ActiveRecord::Base
             puts "#{character.name}, their class is #{character.char_class}, race #{character.race}"
         end
     end
-
+ 
 end #end of Character
