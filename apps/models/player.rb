@@ -13,14 +13,15 @@ class Player < ActiveRecord::Base
     def self.character
         self.all.select {|player| player.id == PlayerCharacter.player_id}
     end
+
     def self.login
         user = @@prompt.ask("Welcome back! What's your username?")
         puts " "
         dragon = @@prompt.decorate('🐉')
         pass = @@prompt.mask("Password", mask: dragon)
         self.find_by(username: user, password: pass) #creates an instance but doesn't assign it to variable/argument "user" or "@user"
-        puts "Welcome back to Oubliettes & Ogres #{self.username}! Come, explore everything our spooky dungeons have to offer."
-        sleep(3)
+        puts "Welcome back to Oubliettes & Ogres! Come, explore everything our spooky dungeons have to offer."
+        sleep(1.5)
     end
 
     def self.signup
@@ -30,8 +31,8 @@ class Player < ActiveRecord::Base
         pass = @@prompt.mask("Password", mask: dragon)
         Player.create(username: user, password: pass)
         #@player = self.all.find_by(username: user, password: pass)
-        puts "Welcome to Oubliettes & Ogres #{self.username}! Come, explore everything our spooky dungeons have to offer."
-        sleep(2)
+        puts "Welcome to Oubliettes & Ogres! Come, explore everything our spooky dungeons have to offer."
+        sleep(1.5)
     end
     
     

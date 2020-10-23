@@ -16,12 +16,12 @@ class CLI
 
     def make_user
         sleep(1.5)
-        choices = { "Log in" => 1, "Sign up" => 2, "Exit" => 3} 
+        choices = { "Sign up" => 1, "Log in" => 2, "Exit" => 3} 
         choice = @@prompt.select("Would you like to sign up or log in?", choices)
         if choice == 1
-            Player.login
-        elsif choice == 2
             Player.signup
+        elsif choice == 2
+            Player.login
         else choice == 3
             exit!
         end
@@ -48,15 +48,15 @@ class CLI
     def preamble
         system('clear') #ascii art if time
         puts "The legends say there's a great treasure in these dungeons..."
-        sleep(2)
+        sleep(2.5)
         puts "But no one has ever come back from their quest."
-        sleep(2)
+        sleep(2.5)
         puts "Local lore tells of a dragon."
-        sleep(2)
+        sleep(2.5)
         puts "Treasure, or dragon? Riches beyond your wildest dreams, or a fiery death?"
-        sleep(2)
+        sleep(2.5)
         puts "You've set out early on your quest. It's mid-day and the sun is high."
-        sleep(3)
+        sleep(3.5)
         self.enter_dungeon 
     end
 
