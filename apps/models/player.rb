@@ -1,8 +1,6 @@
 require 'tty-prompt'
 require 'pry'
 
-# t.string :username
-# t.string :password
  
 class Player < ActiveRecord::Base
     has_many :character

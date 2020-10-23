@@ -9,6 +9,11 @@ class CLI
     @@monster = nil
     @@player_character = nil #added this in to be able create PlayerCharacter class instance I think
         
+    def system_clear
+        sleep(2)
+        system('clear') 
+    end
+
     def main_menu       
         system('clear')
         puts "Welcome to Oubliettes & Ogres"
@@ -72,6 +77,8 @@ class CLI
             if choice == 1
                 puts "Cautiously you make your way through the entrance..."
             else choice == 2
+                puts "Guess you'll live to adventure another day"
+                self.system_clear
                 exit!
             end
             sleep(1.5)
@@ -87,7 +94,6 @@ class CLI
         puts "Oh no! What's that over there!"
         
        
-            #neither of these attack methods work right now 03:17am, enemy.attack works within Adventure.fight though... got some stuff to think on...
         self.fight
     end
 
@@ -95,11 +101,7 @@ class CLI
         Monster.encounter
     end
 
-    def system_clear
-        sleep(2)
-        system('clear')
-        
-    end
+  
 
     def fight
         enemy = self.enemy

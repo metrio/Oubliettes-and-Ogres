@@ -1,4 +1,4 @@
-#t.string :location
+
 
 class Adventure < ActiveRecord::Base  
     has_many    :item_weapon

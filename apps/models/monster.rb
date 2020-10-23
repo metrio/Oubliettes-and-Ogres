@@ -1,7 +1,4 @@
-    # t.string :name
-    # t.integer :health_points
-    # t.string :attack
-    # t.integer :adventure_id
+    
 
 require 'pry'
 class Monster < ActiveRecord::Base
