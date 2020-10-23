@@ -95,66 +95,62 @@ class CLI
         Monster.encounter
     end
 
+    def system_clear
+        sleep(2)
+        system('clear')
+        
+    end
+
     def fight
+        enemy = self.enemy
         choices = {"Attack!" => 1, "Wait.." => 2, "Run Away!!!!" => 3}
          choice = @@prompt.select("Its a #{enemy.name}!", choices) 
          if choice == 1
-            puts "You did! It you slayed the #{enemy.name}"
+            puts "You did it! You slayed the #{enemy.name}"
+            self.system_clear
+            Adventure.leg_two
          elsif choice == 2
-            puts "You died, you weren't worthy"
+            puts "The #{enemy.name} attacked first. You've died you weren't worthy"
             puts "Better luck next time. Goodbye"
             sleep(3)
             exit!
          else choice == 3
             puts "You've successfully ran away, but is that really what you wanted to do?" 
+            self.system_clear
             Adventure.leg_two
-            end
+        end
+        self.system_clear
+        puts "Ooh! What's that shiny thing?"
+        self.system_clear
+        self.find_treasure
     end
 
+    def find_treasure 
+        choices = {"Investigate" => 1, "Pick it up!" => 2, "Keep walking" => 3 }
+        choice = @@prompt.select("You catch something glimmering in the corner of your eye, what do you do?", choices)
+            if choice == 1
+                puts "15 gold pieces! How lucky!"
+                self.system_clear
+                Adventure.leg_three
+              
+            elsif choice == 2
+                puts "Oh no, you don't feel so good. That locket must have been poisoned!"
+                puts "You slowly collapse to the dungeon floor..." 
+                self.system_clear
+                puts "You die alone and afraid. Waiting for eternity or until the next adventurer comes down these halls."
+                sleep(2)
+                exit!
+            else 
+                puts "You rush past what looks to be a large rats nest laced with gold pieces."
+                puts "Better to not bother them, you've heard the rats here are not to be messed with."
+                self.system_clear
+                Adventure.leg_three
+            end
+            self.system_clear
+            self.boss_fight
+        end
 
-    
-
-    
-    
-    # def fight
-    #     enemy = self.enemy
-    #     choices = {"Attack!" => 1, "Wait.." => 2, "Run Away!!!!" => 3}
-    #     choice = @@prompt.select("Its a #{enemy.name}!", choices)    
-    #     if choice == 1
-    #         player = PlayerCharacter.last
-    #         player.hero_attack #placeholder need to interpolate char.name
-    #         self.monster_damage
-    #     elsif choice == 2
-    #         binding.pry
-    #         enemy.attack
-    #     else
-    #         exit!
-    #     end
-    # end
-
-    # def monster_damage
-    #     enemy.health_points -= rand(1..8)
-    #     self.attack
-    # end
-
-    # def attack
-    #     attack_roll = rand(1..20)
-    #     if attack_roll >= 14
-    #         #character.health_points - self.attack
-    #     #elsif attack_roll == 1
-    #      #   self.health_points - self.attack
-    #     binding.pry
-    #     else 
-    #         puts "The monster missed"
-    #     end
-    #     self.player_damage
-    # end
-    
-    # def player_damage
-    #     player.health_points -= rand(1..8)
-    #     self.fight #until character.hp OR monster.hp == 0
-    # end
-
-
-
+            def boss_fight
+                puts "The locals warned you about this, but you came anyway. Foolish"
+            end
 end #class end
