@@ -62,16 +62,16 @@ elf = api_data_race["results"][2]["name"]
 dwarf = api_data_race["results"][1]["name"]
 tiefling = api_data_race["results"][8]["name"]
 
-rat = Monster.create(name:"Rat", health_points: 1, attack: 1)
-kobolt = Monster.create(name:"Kobolt", health_points: 59, attack: 7)
-ogre = Monster.create(name:"Ogre", health_points: 75, attack: 9)
-black_dragon = Monster.create(name:"Black Wrymling Dragon", health_points: 120, attack: 14)
+rat = Monster.create(name:"Rat", health_points: 5, attack: 1)
+kobold = Monster.create(name:"Kobold", health_points: 10, attack: 7)
+ogre = Monster.create(name:"Ogre", health_points: 15, attack: 9)
+black_dragon = Monster.create(name:"Black Wyrmling Dragon", health_points: 25, attack: 14)
 
 
-luvic = Character.create(name:"Luvic", race:tiefling, char_class:rogue, health_points: 27, exp_points: 0)
-talvi = Character.create(name:"Talvi", race:elf, char_class:cleric, health_points: 23, exp_points: 0)
-elta = Character.create(name:"Elta", race:human, char_class:ranger, health_points: 28, exp_points: 0)
-airgan = Character.create(name: "Airgan", race:dwarf, char_class: wizard, health_points: 24, exp_points: 0)
+luvic = Character.create(name:"Luvic", race:tiefling, char_class:rogue, health_points: 27, exp_points: 0, stats: "crossbow")
+talvi = Character.create(name:"Talvi", race:elf, char_class:cleric, health_points: 23, exp_points: 0, stats: "Sacred Flame spell")
+elta = Character.create(name:"Elta", race:human, char_class:ranger, health_points: 28, exp_points: 0, stats: "greatsword")
+airgan = Character.create(name: "Airgan", race:dwarf, char_class: wizard, health_points: 24, exp_points: 0, stats: "Acid Splash spell")
 
 
 map_one = Adventure.create(location: "map1")

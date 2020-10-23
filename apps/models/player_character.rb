@@ -8,7 +8,7 @@ class PlayerCharacter < ActiveRecord::Base
     
     def self.current_char
         self.ids.last
-     end
+    end
 end
  
 
