@@ -7,6 +7,7 @@ require 'pry'
 class Monster < ActiveRecord::Base
     belongs_to :adventure
     
+    
     def attack
         attack_roll = rand(1..20)
         if attack_roll >= 14

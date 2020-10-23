@@ -28,31 +28,12 @@ class Adventure < ActiveRecord::Base
         #puts "Dragon dodged that spell! Watch out!"
     end
 
-    def self.enemy 
-        Monster.encounter
-    end
-
+   
     def self.boss
         Monster.boss_encounter
     end
 
-    def self.fight
-        enemy = self.enemy
-        choices = {"Attack!" => 1, "Wait.." => 2, "Run Away!!!!" => 3}
-        choice = @@prompt.select("Its a #{enemy.name}!", choices)    
-        if choice == 1
-            self.all.hero_attack #placeholder need to interpolate char.name
-        elsif choice == 2
-            binding.pry
-            enemy.attack
-            
-        else
-            exit!
-        end
-    end
-        # char_id =  PlayerCharacter.current_char
-        # charchar = Character.find_by(id: char_id)
-        
+  
     def self.leg_one
     #    n = rand(4..10)
     #     n = 0
@@ -63,5 +44,8 @@ class Adventure < ActiveRecord::Base
             @@prompt.select("Which way?", choices)
         end
     end
+
+    def self.leg_two
+        
 
 end #End of Adventure
