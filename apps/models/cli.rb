@@ -42,7 +42,7 @@ class CLI
         self.ass_char
     end
 
-    def ass_char    
+    def ass_char ####   
         
         puts " "
         choice = @@prompt.select("Time to choose your character!", %w(Luvic Talvi Elta Airgan))
