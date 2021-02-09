@@ -26,6 +26,6 @@ This is a text based adventure game running out of your CLI. You'll interact wit
 3. run bundle install
 4. run rake db:migrate
 5. run rake db:seed
-6. Start game by running "ruby start.rb" in terminal after setup
+6. Start game by running "ruby ./bin/run.rb" in terminal after setup
 ```
 Demetrio Lima & Rebecca Robbins
